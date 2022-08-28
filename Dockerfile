@@ -14,4 +14,6 @@ WORKDIR /home/bot
 COPY ${JAR_FILE} bot.jar
 COPY ${LAUNCH_FILE} ${LAUNCH_FILE}
 
+RUN chmod +x ./launch.sh
+
 ENTRYPOINT ["launch.sh"]
