@@ -14,4 +14,4 @@ WORKDIR /home/bot
 COPY ${JAR_FILE} bot.jar
 COPY ${LAUNCH_FILE} ${LAUNCH_FILE}
 
-ENTRYPOINT ["/launch.sh"]
+ENTRYPOINT ["launch.sh"]
