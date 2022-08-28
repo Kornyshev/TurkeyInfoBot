@@ -20,3 +20,13 @@ Secure variables:
 4. Weather API key
 5. Water temperature API key
 6. Bot token for Telegram API
+
+Build Docker image:
+docker build -t telegram-bot-jar-image .
+docker run --env SPRING_DATASOURCE_URL=xxx \
+            --env SPRING_DATASOURCE_USERNAME=xxx \
+            --env SPRING_DATASOURCE_PASSWORD=xxx \
+            --env WEATHER_API_KEY=xxx \
+            --env WATER_TEMPERATURE_API_KEY=xxx \
+            --env BOT_TOKEN=xxx \
+            telegram-bot-jar-image  
