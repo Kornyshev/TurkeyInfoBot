@@ -3,30 +3,7 @@
 Script in GitHub Actions:
 1. Trigger by push into Master
 2. Script on remote server
-   1. Git pull
-   2. Stop and delete all existing containers
-   3. Build new image using pulled Dockerfile
-   4. Run Docker container
-
-Dockerfile:
-1. Copy source code to container
-2. Maven clean + package
-3. Run command: Java with JAR file + Env vars
-
-Secure variables:
-1. PostgreSQL URL to DB
-2. DB username
-3. DB password
-4. Weather API key
-5. Water temperature API key
-6. Bot token for Telegram API
-
-Build Docker image:
-docker build -t telegram-bot-jar-image .
-docker run --env SPRING_DATASOURCE_URL=xxx \
-            --env SPRING_DATASOURCE_USERNAME=xxx \
-            --env SPRING_DATASOURCE_PASSWORD=xxx \
-            --env WEATHER_API_KEY=xxx \
-            --env WATER_TEMPERATURE_API_KEY=xxx \
-            --env BOT_TOKEN=xxx \
-            telegram-bot-jar-image  
+   1. Navigate to working directory
+   2. Git pull
+   3. Maven clean + package
+   4. Rerun existing Java service with new JAR file
