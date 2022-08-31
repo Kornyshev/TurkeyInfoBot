@@ -10,15 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: ssh pipelines
-        uses: cross-the-world/ssh-pipeline@master
-        env:
-          WELCOME: "SSH pipeline"
+      - name: Via SSH
+        uses: nerd4ever/ssh-action@master
         with:
+          command: |
+            w
+            ls -a
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USERNAME }}
-          pass: ${{ secrets.PASSWORD }}
-          connect_timeout: 10s
-          script: |
-            ls -la  
-            echo $WELCOME
+          key: ${{ secrets.KEY }}
