@@ -8,16 +8,11 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    
     steps:
-      - shell: bash
-        env:
-          SSH_USER: ${{ secrets.USERNAME }}
-          SSH_KEY: ${{ secrets.KEY }}
-          SSH_HOST: ${{ secrets.HOST }}
-          TEST: ${{ secrets.TEST }}
-        run: |
-          echo "$SSH_USER"
-          echo "$SSH_KEY"
-          echo "$SSH_HOST"
-          echo "$TEST"
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASSWORD }}
+        script: ls -la
