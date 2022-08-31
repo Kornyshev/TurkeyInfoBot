@@ -1,0 +1,19 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    name: Trigger Shell script
+    runs-on: ubuntu-latest
+    steps:
+    - name: Executing remote SSH commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: bash ${{ secrets.PATH_TO_SCRIPT }}
