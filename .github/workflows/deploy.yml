@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Config SSH
         run: |
+          echo "$SSH_USER"
+          echo "$SSH_KEY"
+          echo "$SSH_HOST"
           mkdir -p ~/.ssh/
           echo "$SSH_KEY" > ~/.ssh/staging.key
           chmod 600 ~/.ssh/staging.key
@@ -22,8 +25,6 @@ jobs:
             IdentityFile ~/.ssh/staging.key
             StrictHostKeyChecking no
           END
-          ping $SSH_HOST
-          ssh $SSH_HOST
         env:
           SSH_USER: ${{ secrets.USERNAME }}
           SSH_KEY: ${{ secrets.KEY }}
