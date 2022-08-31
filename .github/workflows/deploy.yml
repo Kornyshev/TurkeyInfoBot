@@ -10,7 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Config SSH
+      - shell: bash
+        env:
+          SSH_USER: ${{ secrets.USERNAME }}
+          SSH_KEY: ${{ secrets.KEY }}
+          SSH_HOST: ${{ secrets.HOST }}
         run: |
           echo "$SSH_USER"
           echo "$SSH_KEY"
@@ -25,10 +29,6 @@ jobs:
             IdentityFile ~/.ssh/staging.key
             StrictHostKeyChecking no
           END
-        env:
-          SSH_USER: ${{ secrets.USERNAME }}
-          SSH_KEY: ${{ secrets.KEY }}
-          SSH_HOST: ${{ secrets.HOST }}
           
-      - name: Run some commands
+      - shell: bash
         run: ssh staging 'ls -la'
