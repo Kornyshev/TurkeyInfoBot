@@ -6,13 +6,19 @@ on:
 
 jobs:
   build:
-    name: Trigger Shell script
+    name: Build
     runs-on: ubuntu-latest
+    
     steps:
-    - name: Executing remote SSH commands using password
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        script: bash ${{ secrets.PATH_TO_SCRIPT }}
+      - name: ssh pipelines
+        uses: cross-the-world/ssh-pipeline@master
+        env:
+          WELCOME: "SSH pipeline"
+        with:
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USERNAME }}
+          pass: ${{ secrets.PASSWORD }}
+          connect_timeout: 10s
+          script: |
+            ls -la  
+            echo $WELCOME
