@@ -28,4 +28,4 @@ jobs:
           SSH_HOST: ${{ secrets.HOST }}
           
       - name: Run some commands
-        run: ls -la
+        run: ssh staging 'ls -la'
