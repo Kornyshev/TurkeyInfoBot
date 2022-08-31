@@ -15,5 +15,6 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
+        passphrase: ${{ secrets.PASSPHRASE }}
         key: ${{ secrets.PRIVATE_KEY }}
         script: bash ${{ secrets.PATH_TO_SCRIPT }}
