@@ -27,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Slf4j
@@ -143,7 +144,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case "/delete" -> {
                     userRepository.deleteById(chatId);
                     sendMessage(chatId, "Your data was deleted from DB.");
-                    userRepository.findAll().forEach(user -> log.info("User: {}", user));
+                    sendMessage(chatId, Stream.of(userRepository.findAll()).map(Object::toString)
+                            .collect(Collectors.joining("\n")));
                 }
                 case "/users" -> {
                     if (String.valueOf(chatId).equals(config.getAdminId())) {
