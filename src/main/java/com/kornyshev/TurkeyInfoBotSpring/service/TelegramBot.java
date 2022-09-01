@@ -145,6 +145,14 @@ public class TelegramBot extends TelegramLongPollingBot {
                     sendMessage(chatId, "Your data was deleted from DB.");
                     userRepository.findAll().forEach(user -> log.info("User: {}", user));
                 }
+                case "/users" -> {
+                    if (String.valueOf(chatId).equals(config.getAdminId())) {
+                        sendMessage(chatId, "Current state of [Users] table:");
+                        userRepository.findAll().forEach(user -> sendMessage(chatId, user.toString()));
+                    } else {
+                        sendMessage(chatId, "You do not have permissions!");
+                    }
+                }
                 default -> sendMessage(chatId, "Sorry, command was not recognized");
             }
         }

@@ -14,6 +14,8 @@ public class BotConfig {
 
     @Value("${bot.name}")
     String botName;
+    @Value("${admin.chat.id}")
+    String adminId;
     @Value("${bot.token}")
     String token;
     @Value("${main.city}")
