@@ -19,6 +19,8 @@ After the bot worked correctly I configured its automatic deployment on the Ubun
 2. on the Ubuntu server was created based on the JAR file from the project with the bot
 3. YAML script runs a local script that pulls the updated code from GitHub, creates a new JAR file using Maven and restarts the service in Ubuntu using commands in the terminal
 
+<img alt="img_2.png" src="img_2.png"/>
+
 Script in GitHub Actions:
 1. Trigger by push into Master
 2. Script on remote server
@@ -39,3 +41,5 @@ Links used to create Linux service:
 2. https://linuxize.com/post/create-a-file-in-linux/#creating-a-file-using-heredoc
 
 **P.S. Now the server with the bot is stopped so as not to pay for it constantly, but if necessary, you can quickly start everything again**
+
+<img alt="img_3.png" src="img_3.png"/>
