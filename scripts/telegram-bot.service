@@ -1,16 +1,18 @@
 [Unit]
-Description=Simple Telegram Spring Bot
-After=syslog.target network.target
-
+Description=My Telegram Bot
 [Service]
-SuccessExitStatus=143
-
 User=root
-Group=root
 
-Type=simple
+WorkingDirectory=/root/telegram-bot
 
-ExecStart=java -jar /opt/bots/tg/telegram-simple-bot.jar
+# Path to executable.
+# Executable is a bash script which calls jar file
+ExecStart=/root/telegram-bot/execute-jar.sh
+
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
